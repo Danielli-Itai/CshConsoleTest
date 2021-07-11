@@ -11,17 +11,8 @@ namespace CshConsoleTest
 	public class CommandsTest
 	{
 		public const string CMD_ECHO_PARAM= "hello echo";
-		public const string CMD_LINE_ECHO= "echo(hello world)";
+		public const string CMD_LINE_ECHO= "echo(" + CMD_ECHO_PARAM + ")";
 
-		private static bool CommandEcho(string[] parameters)
-		{
-			return (true);
-		}
-
-		[TestMethod]
-		public void TestMethod1()
-		{
-		}
 
 		[TestMethod]
 		public void TestParser()
@@ -35,14 +26,6 @@ namespace CshConsoleTest
 			return;
 		}
 
-		//	Test the echo command function.
-		[TestMethod]
-		public void	TestEcho()
-		{
-			string[] parameters = CommandsApi.CommandParams(CMD_LINE_ECHO);
-			Assert.IsTrue(AppCommands.CommandEcho(parameters));
-			return;
-		}
 
 		//	Test the commands list using the echo command function.
 		[TestMethod]
@@ -53,10 +36,10 @@ namespace CshConsoleTest
 			Assert.IsNotNull(pCommands);
 
 			//	Check adding echo command to commands list.
-			Assert.IsTrue(CommandsApi.CommandAdd(ref pCommands, AppCommands.CMD_ECHO, CommandEcho));
+			Assert.IsTrue(CommandsApi.CommandAdd(ref pCommands, AppCommands.CMD_ECHO, AppCommands.CommandEcho));
 
 			//	Execute the echo command in the command list.
-			Assert.IsTrue(CommandsApi.CommandExec(ref pCommands, CMD_LINE_ECHO));
+			Assert.IsTrue(CMD_ECHO_PARAM == CommandsApi.CommandExec(ref pCommands, CMD_LINE_ECHO));
 			return;
 		}
 	};

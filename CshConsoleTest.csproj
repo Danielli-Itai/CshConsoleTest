@@ -50,7 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseLibTest\CshBaseLibTest.cs" />
-    <Compile Include="CommandsTest\CommandsTest.cs" />
+    <Compile Include="CommandsTest\CommandsAppTest.cs" />
+    <Compile Include="CommandsTest\CommandsGuiTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
